@@ -12,8 +12,12 @@ library(ggplot2)
 
 #df.yield = get.yield.curve()
 
-pdf("curva_anbima_pdf", 7, 4.5) # Salvar o gráfico em pdf na pasta do projeto
+#pdf("curva_anbima_pdf", 7, 4.5) # Salvar o gráfico em pdf na pasta do projeto
 #png("curva_anbima_png", 700, 350) # Salvar o gráfico em png na pasta do projeto
+
+
+# Salva Gráfico em pdf com a data atual no formato year_month_day_curva_anbima
+pdf(file = paste(format(Sys.Date(), "%Y_%m_%d"), "curva_anbima", sep = "_"), 7, 4.5)
 
 ggplot(get.yield.curve(), aes(x=ref.date, y=value)) + 
 geom_line(size=1) + geom_point() + facet_grid(~type, scales = 'free') +
